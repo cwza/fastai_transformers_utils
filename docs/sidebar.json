@@ -1,10 +1,7 @@
 {
-  "Notebook": {
-    "Export to modules": "/export",
-    "Convert to html": "/export2html",
-    "Show doc": "/showdoc",
-    "Test functions": "/test",
-    "Core functions": "/core",
-    "Command line functions": "/cli"
+  "fastai_transformers_utils": {
+    "Overview": "/",
+    "All functions": "/general",
+    "Title": "/example_gpt2_lm"
   }
 }

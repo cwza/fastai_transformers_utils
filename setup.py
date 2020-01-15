@@ -1,7 +1,7 @@
-from packaging.version import parse
+from pkg_resources import parse_version
 from configparser import ConfigParser
 import setuptools
-assert parse(setuptools.__version__)>=parse('36.2')
+assert parse_version(setuptools.__version__)>=parse_version('36.2')
 
 # note: all settings are in settings.ini; edit there, not here
 config = ConfigParser(delimiters=['='])
@@ -25,25 +25,6 @@ lic = licenses[cfg['license']]
 min_python = cfg['min_python']
 
 
-#### For github requirements
-with open('./requirements.txt') as f:
-    requirements = f.read().splitlines()
-required = []
-dependency_links = []
-# do not add to required lines pointing to git repositories
-EGG_MARK = '#egg='
-for line in requirements:
-    if line.startswith('-e git:') or line.startswith('-e git+') or \
-            line.startswith('git:') or line.startswith('git+'):
-        if EGG_MARK in line:
-            package_name = line[line.find(EGG_MARK) + len(EGG_MARK):]
-            required.append(package_name)
-            dependency_links.append(line)
-        else:
-            print('Dependency to a git repository should have the format:')
-            print('git+ssh://git@github.com/xxxxx/xxxxxx#egg=package_name')
-    else:
-        required.append(line)
 
 setuptools.setup(
     name = cfg['lib_name'],
@@ -64,8 +45,10 @@ setuptools.setup(
     zip_safe = False,
     entry_points = { 'console_scripts': cfg.get('console_scripts','').split() },
     #### For github requirements
-    install_requires=required,
-    dependency_links=dependency_links,
+    install_requires=[
+        'transformers @ git+https://github.com/huggingface/transformers.git',
+        'fastai2', 'nbdev'
+    ],
     ####
     **setup_cfg)
 
