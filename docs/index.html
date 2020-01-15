@@ -38,7 +38,28 @@ summary: "Some utililties to help you using fastai2 to train huggingface transfo
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Editable-install">Editable install<a class="anchor-link" href="#Editable-install">&#182;</a></h2>
+<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Please see the notebooks that named start with example and under nbs directory.</p>
+<p><a href="nbs/01_example_roberta_classification.ipynb">example_roberta_classification</a><br>
+<a href="nbs/02_example_gpt2_lm.ipynb">example_gpt2_lm</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-develop">How to develop<a class="anchor-link" href="#How-to-develop">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Editable-install">Editable install<a class="anchor-link" href="#Editable-install">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -54,30 +75,20 @@ make install
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Run-Test">Run Test<a class="anchor-link" href="#Run-Test">&#182;</a></h2>
+<h3 id="Develop-pipeline">Develop pipeline<a class="anchor-link" href="#Develop-pipeline">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span>make <span class="nb">test</span>
-make test-slow
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-use">How to use<a class="anchor-link" href="#How-to-use">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Please see the notebooks that named start with example and under nbs directory.</p>
-<p><a href="nbs/01_example_roberta_classification.ipynb">example_roberta_classification</a><br>
-<a href="nbs/02_example_gpt2_lm.ipynb">example_gpt2_lm</a></p>
+<ol>
+<li>Modify notebooks in nbs folder (Write unit tests in the same notebook and create new notebook to write integration test)</li>
+<li><code>make build-lib</code> to update python files</li>
+<li><code>make test</code> to run unit test</li>
+<li><code>make test-slow</code> to run integration test</li>
+<li><code>make build-all</code> to run build-lib, build-docs, clean-nbs</li>
+<li><code>git add commit and push</code></li>
+</ol>
 
 </div>
 </div>

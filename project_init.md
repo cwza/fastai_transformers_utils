@@ -78,8 +78,9 @@ make install
 ```
 
 ## Develop
-1. Add notebooks in nbs, run nbdev_build_lib to generate python file in fastai_transformers_utils.
-2. `make test`
-3. `make test-slow`
-3. `make build-all`
-4. `git commit`
+1. Modify notebooks in nbs folder (Write unit tests in the same notebook and create new notebook to write integration test)
+3. `make build-lib` to update python files
+2. `make test` to run unit test
+3. `make test-slow` to run integration test
+3. `make build-all` to run build-lib, build-docs, clean-nbs
+4. `git add commit and push`
