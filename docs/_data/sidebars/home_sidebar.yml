@@ -13,10 +13,10 @@ entries:
       title: All functions
       url: /general
     - output: web,pdf
-      title: 'Integration Test: Roberta Classification on IMDB_SAMPLE'
+      title: 'Example: Roberta Classification on IMDB_SAMPLE'
       url: /example_roberta_classification
     - output: web,pdf
-      title: 'Integration Test: GPT2 Language Model on WikiText_Tiny'
+      title: 'Example: GPT2 Language Model on WikiText_Tiny'
       url: /example_gpt2_lm
     output: web
     title: fastai_transformers_utils

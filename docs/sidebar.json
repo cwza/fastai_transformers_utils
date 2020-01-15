@@ -2,7 +2,7 @@
   "fastai_transformers_utils": {
     "Overview": "/",
     "All functions": "/general",
-    "Integration Test: Roberta Classification on IMDB_SAMPLE": "/example_roberta_classification",
-    "Integration Test: GPT2 Language Model on WikiText_Tiny": "/example_gpt2_lm"
+    "Example: Roberta Classification on IMDB_SAMPLE": "/example_roberta_classification",
+    "Example: GPT2 Language Model on WikiText_Tiny": "/example_gpt2_lm"
   }
 }
