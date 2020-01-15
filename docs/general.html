@@ -5,7 +5,7 @@ title: All functions
 keywords: fastai
 sidebar: home_sidebar
 
-
+summary: "Now put all functions in this module. Consider split to multiple modules if we have more functions."
 ---
 <!--
 
@@ -44,26 +44,6 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-<p style="color: red;">
-The default version of TensorFlow in Colab will soon switch to TensorFlow 2.x.<br>
-We recommend you <a href="https://www.tensorflow.org/guide/migrate" target="_blank">upgrade</a> now 
-or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tensorflow_version 1.x</code> magic:
-<a href="https://colab.research.google.com/notebooks/tensorflow_version.ipynb" target="_blank">more info</a>.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -83,7 +63,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TransformersTokenizer" class="doc_header"><code>class</code> <code>TransformersTokenizer</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L16" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TransformersTokenizer</code>(<strong><code>tokenizer</code></strong>:<code>PreTrainedTokenizer</code>)</p>
+<h2 id="TransformersTokenizer" class="doc_header"><code>class</code> <code>TransformersTokenizer</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TransformersTokenizer</code>(<strong><code>tokenizer</code></strong>:<code>PreTrainedTokenizer</code>)</p>
 </blockquote>
 <p>fastai want the tokenizer can handle list of string.
 use in parallel_gen()</p>
@@ -165,7 +145,7 @@ use in parallel_gen()</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="TransformersNumericalize" class="doc_header"><code>class</code> <code>TransformersNumericalize</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L25" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TransformersNumericalize</code>(<strong><code>tokenizer</code></strong>:<code>PreTrainedTokenizer</code>) :: <code>Transform</code></p>
+<h2 id="TransformersNumericalize" class="doc_header"><code>class</code> <code>TransformersNumericalize</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L26" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TransformersNumericalize</code>(<strong><code>tokenizer</code></strong>:<code>PreTrainedTokenizer</code>) :: <code>Transform</code></p>
 </blockquote>
 <p>Delegates (<code>__call__</code>,<code>decode</code>,<code>setup</code>) to (<code>encodes</code>,<code>decodes</code>,<code>setups</code>) if <code>split_idx</code> matches</p>
 
@@ -207,7 +187,7 @@ use in parallel_gen()</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Pad2Max" class="doc_header"><code>class</code> <code>Pad2Max</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L39" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Pad2Max</code>(<strong><code>max_len</code></strong>, <strong><code>pad_idx</code></strong>) :: <code>Transform</code></p>
+<h2 id="Pad2Max" class="doc_header"><code>class</code> <code>Pad2Max</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/general.py#L40" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Pad2Max</code>(<strong><code>max_len</code></strong>, <strong><code>pad_idx</code></strong>) :: <code>Transform</code></p>
 </blockquote>
 <p>pad rank one tensor by pad_idx to max_len, if original len is larger than max_len, truncate it</p>
 
@@ -451,24 +431,24 @@ What fastai want is last_hidden_state</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+                               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 
 <span class="n">learn</span> <span class="o">=</span> <span class="n">FakeLearner</span><span class="p">(</span><span class="n">cb</span><span class="o">=</span><span class="n">BertSeqClassificationCallback</span><span class="p">(</span><span class="n">pad_id</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">xb</span><span class="o">=</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,))</span>
 <span class="n">learn</span><span class="o">.</span><span class="n">run_cb</span><span class="p">(</span><span class="s1">&#39;begin_batch&#39;</span><span class="p">)</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">learn</span><span class="o">.</span><span class="n">xb</span><span class="p">,</span> <span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">attention_mask</span><span class="p">))</span>
+
+<span class="n">learn</span> <span class="o">=</span> <span class="n">FakeLearner</span><span class="p">(</span><span class="n">cb</span><span class="o">=</span><span class="n">BertSeqClassificationCallback</span><span class="p">(</span><span class="n">pad_id</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">pred</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;logits&#39;</span><span class="p">,))</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">run_cb</span><span class="p">(</span><span class="s1">&#39;after_pred&#39;</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">learn</span><span class="o">.</span><span class="n">pred</span><span class="p">,</span> <span class="s1">&#39;logits&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Export">Export<a class="anchor-link" href="#Export">&#182;</a></h1>
-</div>
-</div>
 </div>
 </div>
  

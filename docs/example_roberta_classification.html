@@ -1,11 +1,11 @@
 ---
 
-title: Title
+title: Integration Test: Roberta Classification on IMDB_SAMPLE
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "summary"
+
 ---
 <!--
 
@@ -27,38 +27,19 @@ summary: "summary"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">fastai_transformers_utils.general</span> <span class="k">import</span> <span class="n">TransformersTokenizer</span><span class="p">,</span> <span class="n">TransformersNumericalize</span><span class="p">,</span> <span class="n">Pad2Max</span><span class="p">,</span> <span class="n">BertSeqClassificationCallback</span><span class="p">,</span> <span class="n">roberta_SeqClassification_split</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">capture</span>
+from fastai_transformers_utils.general import TransformersTokenizer, TransformersNumericalize, Pad2Max, BertSeqClassificationCallback, roberta_SeqClassification_split
 
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.basics</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.text.all</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.callback.all</span> <span class="k">import</span> <span class="o">*</span>
+import json
+from typing import *
+from fastai2.basics import *
+from fastai2.text.all import *
+from fastai2.callback.all import *
 
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">AutoConfig</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSequenceClassification</span><span class="p">,</span> <span class="n">RobertaForSequenceClassification</span><span class="p">,</span> <span class="n">RobertaTokenizer</span>
+from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassification, RobertaForSequenceClassification, RobertaTokenizer
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-<p style="color: red;">
-The default version of TensorFlow in Colab will soon switch to TensorFlow 2.x.<br>
-We recommend you <a href="https://www.tensorflow.org/guide/migrate" target="_blank">upgrade</a> now 
-or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tensorflow_version 1.x</code> magic:
-<a href="https://colab.research.google.com/notebooks/tensorflow_version.ipynb" target="_blank">more info</a>.</p>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -75,12 +56,6 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Integration-Test:-Roberta-Classification-on-IMDB_SAMPLE">Integration Test: Roberta Classification on IMDB_SAMPLE<a class="anchor-link" href="#Integration-Test:-Roberta-Classification-on-IMDB_SAMPLE">&#182;</a></h1>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -424,13 +399,13 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
   <tbody>
     <tr>
       <th>0</th>
-      <td>&lt;s&gt;The views of Earth that are claimed in this film to have been faked by NASA have recently been compared with the historical weather data for the time of Apollo 11, and show a good match between the cloud patterns in the video sequence and the actual rainfall records on the day.&lt;br /&gt;&lt;br /&gt;This would seem to undermine the entire argument put forward in the film that the "whole Earth" picture is actually a small part of the planet framed by the spacecraft window.&lt;br /&gt;&lt;br /&gt;I am waiting for Bart Sibrel to now claim that the historical weather data has been faked by NASA, though that would no doubt involve them in also replacing every archived newspaper copy with a weather map, and the ones in private hands would still be</td>
-      <td>negative</td>
+      <td>&lt;s&gt;First of all, in defense of JOAN FONTAINE, it must be said that Ginger Rogers would have been terribly miscast as Alyce, the young British lady who has the title role. Fontaine makes a fetching picture as the heroine here, but her acting inexperience shows badly and her dancing is better left unmentioned. Fortunately, she went on to better things.&lt;br /&gt;&lt;br /&gt;But here it's FRED ASTAIRE, GEORGE BURNS and GRACIE ALLEN who get the top billing--and they are excellent. Fans of Burns &amp; Allen will be surprised at how easily they fit into Astaire's dance routines. Especially interesting is the big fun house routine that won choreographer Hermes Pans</td>
+      <td>positive</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>&lt;s&gt;With its companion piece MASTERS OF HORROR, NIGHTMARES AND DREAMSCAPES can only be seen as the absolute nadir of the genre that began so auspiciously with THE TWILIGHT ZONE and THE OUTER LIMITS.&lt;br /&gt;&lt;br /&gt;Of course, part of the problem is that it does nothing to be of any interest to a comparatively adult audience, instead aiming at TEN-YEAR-OLDS, who are only able to count body-bags, and scarcely that. And so grossness is king, and King is grossness.&lt;br /&gt;&lt;br /&gt;Stephen King is simply illiterate  in general he has the aptitude for storytelling of Bart Simpson. Since he cannot</td>
-      <td>negative</td>
+      <td>&lt;s&gt;There are no people like "Show People" Marion Davies (as Peggy Pepper) and William Haines (as Billy Boone). My introduction to Ms. Davies was a "clip" from this film; the delightfully spoofy one in which she lowers a scarf to reveal different emotions. My introduction to Mr. Haines was in viewing this film, presently; though, it's possible I've seen him in a less memorable role. Haines makes an incredible impression, when he joins Davies for a commissary meal - tossing his hat into the ring with some wonderful bits at the dining table. Indeed, Haines and Davies deliver great comic performances.&lt;br /&gt;&lt;br /&gt;The story starts off with Dell Henderson (Col</td>
+      <td>positive</td>
     </tr>
   </tbody>
 </table>
@@ -785,7 +760,7 @@ Total params: 125,237,762
 Total trainable params: 592,130
 Total non-trainable params: 124,645,632
 
-Optimizer used: &lt;function ranger at 0x7f04b328fd90&gt;
+Optimizer used: &lt;function ranger at 0x7f602227da60&gt;
 Loss function: FlattenedLoss of CrossEntropyLoss()
 
 Model frozen up to parameter group number 14
@@ -848,8 +823,8 @@ Callbacks:
   <tbody>
     <tr>
       <td>0</td>
-      <td>0.693394</td>
-      <td>0.685471</td>
+      <td>0.692910</td>
+      <td>0.688130</td>
       <td>0.535000</td>
       <td>00:05</td>
     </tr>

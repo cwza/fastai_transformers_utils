@@ -1,11 +1,11 @@
 ---
 
-title: Title
+title: Integration Test: GPT2 Language Model on WikiText_Tiny
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "summary"
+
 ---
 <!--
 
@@ -27,36 +27,17 @@ summary: "summary"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.basics</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.text.all</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">fastai2.callback</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">capture</span>
+from typing import *
+from fastai2.basics import *
+from fastai2.text.all import *
+from fastai2.callback import *
 
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">AutoConfig</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelWithLMHead</span><span class="p">,</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">GPT2Tokenizer</span>
-<span class="kn">from</span> <span class="nn">fastai_transformers_utils.general</span> <span class="k">import</span> <span class="n">TransformersTokenizer</span><span class="p">,</span> <span class="n">TransformersNumericalize</span><span class="p">,</span> <span class="n">GPT2LMHeadCallback</span><span class="p">,</span> <span class="n">gpt2_lmhead_split</span>
+from transformers import AutoConfig, AutoTokenizer, AutoModelWithLMHead, GPT2LMHeadModel, GPT2Tokenizer
+from fastai_transformers_utils.general import TransformersTokenizer, TransformersNumericalize, GPT2LMHeadCallback, gpt2_lmhead_split
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-<p style="color: red;">
-The default version of TensorFlow in Colab will soon switch to TensorFlow 2.x.<br>
-We recommend you <a href="https://www.tensorflow.org/guide/migrate" target="_blank">upgrade</a> now 
-or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tensorflow_version 1.x</code> magic:
-<a href="https://colab.research.google.com/notebooks/tensorflow_version.ipynb" target="_blank">more info</a>.</p>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -73,12 +54,6 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Integration-Test:-GPT2-Language-Model-on-WikiText_Tiny">Integration Test: GPT2 Language Model on WikiText_Tiny<a class="anchor-link" href="#Integration-Test:-GPT2-Language-Model-on-WikiText_Tiny">&#182;</a></h1>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -417,13 +392,13 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
   <tbody>
     <tr>
       <th>0</th>
-      <td>= WASP @-@ 44 = \n \n WASP @-@ 44 is a G @-@ type star in constellation &lt;unk&gt; that has the Jupiter @-@ size planet WASP @-@ 44b in orbit. The star is slightly less massive and slightly smaller than the Sun ; it is also slightly cooler, but is more</td>
-      <td>WASP @-@ 44 = \n \n WASP @-@ 44 is a G @-@ type star in constellation &lt;unk&gt; that has the Jupiter @-@ size planet WASP @-@ 44b in orbit. The star is slightly less massive and slightly smaller than the Sun ; it is also slightly cooler, but is more metal</td>
+      <td>= Spanish Hill = \n \n Spanish Hill is a hill located in the borough of South Waverly, Pennsylvania. The hill is controversial among historians and archaeologists ; opinions regarding the origin of structures found on the site vary from embankments created by early farmers, to the remnants of a Native American village and &lt;unk&gt;, due to the site '</td>
+      <td>Spanish Hill = \n \n Spanish Hill is a hill located in the borough of South Waverly, Pennsylvania. The hill is controversial among historians and archaeologists ; opinions regarding the origin of structures found on the site vary from embankments created by early farmers, to the remnants of a Native American village and &lt;unk&gt;, due to the site's</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>by the turn of the 17th century, following the Nine Years'War and the Flight of the Earls. \n This control was further consolidated during the wars and conflicts of the 17th century, which witnessed English and Scottish colonisation in the &lt;unk&gt; of Ireland, the Wars of the Three Kingdoms and the &lt;unk&gt; War. Irish losses during</td>
-      <td>the turn of the 17th century, following the Nine Years'War and the Flight of the Earls. \n This control was further consolidated during the wars and conflicts of the 17th century, which witnessed English and Scottish colonisation in the &lt;unk&gt; of Ireland, the Wars of the Three Kingdoms and the &lt;unk&gt; War. Irish losses during the</td>
+      <td>his influence to have Gladstone invited to stand as parliamentary candidate for Midlothian, near to Rosebery's Dalmeny estate. Gladstone had nominally retired from politics after losing his Greenwich seat in 1874, when Disraeli had been swept to power. The campaign was based at Dalmeny where Lady Rosebery hosted a series of</td>
+      <td>influence to have Gladstone invited to stand as parliamentary candidate for Midlothian, near to Rosebery's Dalmeny estate. Gladstone had nominally retired from politics after losing his Greenwich seat in 1874, when Disraeli had been swept to power. The campaign was based at Dalmeny where Lady Rosebery hosted a series of large</td>
     </tr>
   </tbody>
 </table>
@@ -462,6 +437,20 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -478,6 +467,266 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>GPT2LMHeadModel (Input shape: 64 x 72)
+================================================================
+Layer (type)         Output Shape         Param #    Trainable 
+================================================================
+Embedding            64 x 72 x 768        38,597,376 True      
+________________________________________________________________
+Embedding            64 x 72 x 768        786,432    False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 2304       1,771,776  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        590,592    False     
+________________________________________________________________
+Dropout              64 x 12 x 72 x 72    0          False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      False     
+________________________________________________________________
+Conv1D               64 x 72 x 3072       2,362,368  False     
+________________________________________________________________
+Conv1D               64 x 72 x 768        2,360,064  False     
+________________________________________________________________
+Dropout              64 x 72 x 768        0          False     
+________________________________________________________________
+LayerNorm            64 x 72 x 768        1,536      True      
+________________________________________________________________
+Linear               64 x 72 x 50257      38,597,376 True      
+________________________________________________________________
+
+Total params: 163,037,184
+Total trainable params: 77,196,288
+Total non-trainable params: 85,840,896
+
+Optimizer used: &lt;function ranger at 0x7f9b1f00e8c8&gt;
+Loss function: FlattenedLoss of CrossEntropyLoss()
+
+Model frozen up to parameter group number 14
+
+Callbacks:
+  - TrainEvalCallback
+  - Recorder
+  - ProgressCallback
+  - GPT2LMHeadCallback</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -488,6 +737,41 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>accuracy</th>
+      <th>perplexity</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>4.345830</td>
+      <td>0.304304</td>
+      <td>77.156044</td>
+      <td>00:27</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+
 </div>
 </div>
 

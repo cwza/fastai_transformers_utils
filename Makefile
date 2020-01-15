@@ -11,11 +11,13 @@ test:
 test-slow:
 	nbdev_test_nbs --flags=slow
 
-build-all:	build-lib build-docs
-	nbdev_clean_nbs
+build-all:	build-lib build-docs clean-nbs
 	
 build-lib:
 	nbdev_build_lib
 
 build-docs:
 	nbdev_build_docs
+
+clean-nbs:
+	nbdev_clean_nbs

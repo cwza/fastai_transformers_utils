@@ -5,6 +5,7 @@ __all__ = ['TransformersTokenizer', 'TransformersNumericalize', 'Pad2Max', 'bert
            'gpt2_lmhead_split', 'GPT2LMHeadCallback', 'BertSeqClassificationCallback']
 
 # Cell
+#export
 from typing import *
 
 from fastai2.basics import *
@@ -55,7 +56,6 @@ class Pad2Max(Transform):
         return TensorText([v for v in o if v != self.pad_idx])
 
 # Cell
-
 ''' Print the model, look at its architecture, then write down the split '''
 def bert_SeqClassification_split(m:nn.Module):
     # 12 layers, 110M params
@@ -95,9 +95,8 @@ class BertSeqClassificationCallback(Callback):
         attention_mask = torch.where(input_ids == self.pad_id, torch.tensor(0, device=device), torch.tensor(1, device=device)).to(input_ids)
         self.learn.xb = [input_ids, attention_mask]
 
-
-#     def after_pred(self):
-#         ''' The output of AutoModelForSequenceClassification is (logits, attention)
-#             What fastai want is logits '''
-#         logits = self.learn.pred[0]
-#         self.learn.pred = logits
+    def after_pred(self):
+        ''' The output of AutoModelForSequenceClassification is (logits, )
+            What fastai want is logits '''
+        logits = self.learn.pred[0]
+        self.learn.pred = logits
