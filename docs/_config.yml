@@ -3,13 +3,13 @@ output: web
 topnav_title: fastai_transformers_utils
 site_title: fastai_transformers_utils
 company_name: cwza
-description: training huggingface transformers by fastai2
+description: Some utililties to help you using fastai2 to train huggingface transformers.
 # Set to false to disable KaTeX math
 use_math: true
 # Add Google analytics id if you have one and want to use it here
 google_analytics:
 # See http://nbdev.fast.ai/search for help with adding Search
-google_search: 010245432812609962448:fyspubpnue7
+google_search:
 
 host: 127.0.0.1
 # the preview server used. Leave as is.

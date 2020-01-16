@@ -10,14 +10,23 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: All functions
+      title: General
       url: /general
     - output: web,pdf
+      title: Transforms
+      url: /01a_transforms
+    - output: web,pdf
+      title: Model Splits
+      url: /01b_model_splits
+    - output: web,pdf
+      title: Callbacks
+      url: /01c_callbacks
+    - output: web,pdf
       title: 'Example: Roberta Classification on IMDB_SAMPLE'
-      url: /example_roberta_classification
+      url: /99a_example_roberta_classification
     - output: web,pdf
       title: 'Example: GPT2 Language Model on WikiText_Tiny'
-      url: /example_gpt2_lm
+      url: /99b_example_gpt2_lm
     output: web
     title: fastai_transformers_utils
   output: web

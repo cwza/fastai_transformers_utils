@@ -6,18 +6,13 @@ uninstall:
 	python3 setup.py develop --uninstall
 
 test:
-	nbdev_test_nbs
+	nbdev_test_nbs --timing=true
 
 test-slow:
-	nbdev_test_nbs --flags=slow
+	nbdev_test_nbs --flags=slow --timing=true
 
-build-all:	build-lib build-docs clean-nbs
-	
-build-lib:
+build-all:
 	nbdev_build_lib
-
-build-docs:
-	nbdev_build_docs
-
-clean-nbs:
+	nbdev_build_docs --force_all=true
 	nbdev_clean_nbs
+	nbdev_trust_nbs

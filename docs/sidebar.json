@@ -1,8 +1,11 @@
 {
   "fastai_transformers_utils": {
     "Overview": "/",
-    "All functions": "/general",
-    "Example: Roberta Classification on IMDB_SAMPLE": "/example_roberta_classification",
-    "Example: GPT2 Language Model on WikiText_Tiny": "/example_gpt2_lm"
+    "General": "/general",
+    "Transforms": "/01a_transforms",
+    "Model Splits": "/01b_model_splits",
+    "Callbacks": "/01c_callbacks",
+    "Example: Roberta Classification on IMDB_SAMPLE": "/99a_example_roberta_classification",
+    "Example: GPT2 Language Model on WikiText_Tiny": "/99b_example_gpt2_lm"
   }
 }

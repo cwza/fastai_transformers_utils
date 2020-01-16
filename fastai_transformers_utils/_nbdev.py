@@ -3,17 +3,20 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"TransformersTokenizer": "00_general.ipynb",
-         "TransformersNumericalize": "00_general.ipynb",
-         "Pad2Max": "00_general.ipynb",
-         "bert_SeqClassification_split": "00_general.ipynb",
-         "distilbert_SeqClassification_split": "00_general.ipynb",
-         "albert_SeqClassification_split": "00_general.ipynb",
-         "roberta_SeqClassification_split": "00_general.ipynb",
-         "gpt2_lmhead_split": "00_general.ipynb",
-         "GPT2LMHeadCallback": "00_general.ipynb",
-         "BertSeqClassificationCallback": "00_general.ipynb"}
+         "TransformersNumericalize": "01a_transforms.ipynb",
+         "Pad2Max": "01a_transforms.ipynb",
+         "bert_SeqClassification_split": "01b_model_splits.ipynb",
+         "roberta_SeqClassification_split": "01b_model_splits.ipynb",
+         "gpt2_lmhead_split": "01b_model_splits.ipynb",
+         "distilbert_SeqClassification_split": "01b_model_splits.ipynb",
+         "albert_SeqClassification_split": "01b_model_splits.ipynb",
+         "GPT2LMHeadCallback": "01c_callbacks.ipynb",
+         "BertSeqClassificationCallback": "01c_callbacks.ipynb"}
 
-modules = ["general.py"]
+modules = ["general.py",
+           "transforms.py",
+           "model_splits.py",
+           "callbacks.py"]
 
 doc_url = "https://cwza.github.io/fastai_transformers_utils/"
 

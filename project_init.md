@@ -18,7 +18,7 @@ author_email = cwz0205a@gmail.com
 copyright = cwza
 
 nbs_path = nbs
-tst_flags = slow
+tst_flags = slow|skip
 ```
 
 ## Edit setup.py
@@ -35,6 +35,7 @@ setuptools.setup(
 
 ## Add Makefile
 ```
+
 install:
 	pip3 install -e .
 
@@ -42,27 +43,21 @@ uninstall:
 	python3 setup.py develop --uninstall
 
 test:
-	nbdev_test_nbs
+	nbdev_test_nbs --timing=true
 
 test-slow:
-	nbdev_test_nbs --flags=slow
+	nbdev_test_nbs --flags=slow --timing=true
 
-build-all:	build-lib build-docs clean-nbs
-	
-build-lib:
+build-all:
 	nbdev_build_lib
-
-build-docs:
-	nbdev_build_docs
-
-clean-nbs:
+	nbdev_build_docs --force_all=true
 	nbdev_clean_nbs
+	nbdev_trust_nbs
 ```
 
-## Generate root package and Add git hooks for nb clean
+## Generate root package
 ``` bash
 nbdev_build_lib
-nbdev_install_git_hooks
 ```
 
 ## Add dependencies
