@@ -14,5 +14,5 @@ test-slow:
 build-all:
 	nbdev_build_lib
 	nbdev_build_docs --force_all=true
-	nbdev_clean_nbs
 	nbdev_trust_nbs
+	nbdev_clean_nbs
