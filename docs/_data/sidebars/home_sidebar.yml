@@ -14,19 +14,19 @@ entries:
       url: /general
     - output: web,pdf
       title: Transforms
-      url: /01a_transforms
+      url: /transforms
     - output: web,pdf
       title: Model Splits
-      url: /01b_model_splits
+      url: /splits
     - output: web,pdf
       title: Callbacks
-      url: /01c_callbacks
+      url: /callbacks
+    - output: web,pdf
+      title: Example Generated LM
+      url: /lm
     - output: web,pdf
       title: 'Example: Roberta Classification on IMDB_SAMPLE'
-      url: /99a_example_roberta_classification
-    - output: web,pdf
-      title: 'Example: GPT2 Language Model on WikiText_Tiny'
-      url: /99b_example_gpt2_lm
+      url: /classification
     output: web
     title: fastai_transformers_utils
   output: web

@@ -11,12 +11,15 @@ index = {"TransformersTokenizer": "00_general.ipynb",
          "distilbert_SeqClassification_split": "01b_model_splits.ipynb",
          "albert_SeqClassification_split": "01b_model_splits.ipynb",
          "GPT2LMHeadCallback": "01c_callbacks.ipynb",
-         "BertSeqClassificationCallback": "01c_callbacks.ipynb"}
+         "BertSeqClassificationCallback": "01c_callbacks.ipynb",
+         "GeneratedLM": "02_generated_lm.ipynb",
+         "generate": "02_generated_lm.ipynb"}
 
 modules = ["general.py",
            "transforms.py",
            "model_splits.py",
-           "callbacks.py"]
+           "callbacks.py",
+           "generated_lm.py"]
 
 doc_url = "https://cwza.github.io/fastai_transformers_utils/"
 

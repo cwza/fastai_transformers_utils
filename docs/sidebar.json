@@ -2,10 +2,10 @@
   "fastai_transformers_utils": {
     "Overview": "/",
     "General": "/general",
-    "Transforms": "/01a_transforms",
-    "Model Splits": "/01b_model_splits",
-    "Callbacks": "/01c_callbacks",
-    "Example: Roberta Classification on IMDB_SAMPLE": "/99a_example_roberta_classification",
-    "Example: GPT2 Language Model on WikiText_Tiny": "/99b_example_gpt2_lm"
+    "Transforms": "/transforms",
+    "Model Splits": "/splits",
+    "Callbacks": "/callbacks",
+    "Example Generated LM": "/lm",
+    "Example: Roberta Classification on IMDB_SAMPLE": "/classification"
   }
 }
