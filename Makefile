@@ -13,6 +13,7 @@ test-slow:
 
 build-all:
 	nbdev_build_lib
+	rm -f ./docs/*.html
 	nbdev_build_docs --force_all=true
 	nbdev_trust_nbs
 	nbdev_clean_nbs

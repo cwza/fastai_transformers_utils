@@ -2,20 +2,21 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"TransformersTokenizer": "00_general.ipynb",
-         "TransformersNumericalize": "01a_transforms.ipynb",
-         "Pad2Max": "01a_transforms.ipynb",
-         "bert_SeqClassification_split": "01b_model_splits.ipynb",
-         "roberta_SeqClassification_split": "01b_model_splits.ipynb",
-         "gpt2_lmhead_split": "01b_model_splits.ipynb",
-         "distilbert_SeqClassification_split": "01b_model_splits.ipynb",
-         "albert_SeqClassification_split": "01b_model_splits.ipynb",
-         "GPT2LMHeadCallback": "01c_callbacks.ipynb",
-         "BertSeqClassificationCallback": "01c_callbacks.ipynb",
-         "GeneratedLM": "02_generated_lm.ipynb",
-         "generate": "02_generated_lm.ipynb"}
+index = {"TransformersTokenizer": "01_tokenizers.ipynb",
+         "GPT2DecoderTokenizer": "01_tokenizers.ipynb",
+         "TransformersNumericalize": "02_transforms.ipynb",
+         "Pad2Max": "02_transforms.ipynb",
+         "bert_SeqClassification_split": "03_model_splits.ipynb",
+         "roberta_SeqClassification_split": "03_model_splits.ipynb",
+         "gpt2_lmhead_split": "03_model_splits.ipynb",
+         "distilbert_SeqClassification_split": "03_model_splits.ipynb",
+         "albert_SeqClassification_split": "03_model_splits.ipynb",
+         "GPT2LMHeadCallback": "04_callbacks.ipynb",
+         "BertSeqClassificationCallback": "04_callbacks.ipynb",
+         "GeneratedLM": "05_GeneratedLM.ipynb",
+         "generate": "05_GeneratedLM.ipynb"}
 
-modules = ["general.py",
+modules = ["tokenizers.py",
            "transforms.py",
            "model_splits.py",
            "callbacks.py",

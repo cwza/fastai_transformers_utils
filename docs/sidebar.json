@@ -1,11 +1,14 @@
 {
   "fastai_transformers_utils": {
     "Overview": "/",
-    "General": "/general",
+    "Core": "/core",
+    "Tokenizers": "/tokenizers",
     "Transforms": "/transforms",
-    "Model Splits": "/splits",
+    "Model Splits": "/model_splits",
     "Callbacks": "/callbacks",
-    "Example Generated LM": "/lm",
-    "Example: Roberta Classification on IMDB_SAMPLE": "/classification"
+    "GeneratedLM": "/GeneratedLM",
+    "Example: Roberta Classification on IMDB_SAMPLE": "/example_roberta_classification",
+    "Example: GPT2 Language Model on WikiText_Tiny": "/example_gpt2_lm",
+    "Example: GeneratedLM": "/example_GeneratedLM"
   }
 }

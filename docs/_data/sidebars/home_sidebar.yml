@@ -10,23 +10,32 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: General
-      url: /general
+      title: Core
+      url: /core
+    - output: web,pdf
+      title: Tokenizers
+      url: /tokenizers
     - output: web,pdf
       title: Transforms
       url: /transforms
     - output: web,pdf
       title: Model Splits
-      url: /splits
+      url: /model_splits
     - output: web,pdf
       title: Callbacks
       url: /callbacks
     - output: web,pdf
-      title: Example Generated LM
-      url: /lm
+      title: GeneratedLM
+      url: /GeneratedLM
     - output: web,pdf
       title: 'Example: Roberta Classification on IMDB_SAMPLE'
-      url: /classification
+      url: /example_roberta_classification
+    - output: web,pdf
+      title: 'Example: GPT2 Language Model on WikiText_Tiny'
+      url: /example_gpt2_lm
+    - output: web,pdf
+      title: 'Example: GeneratedLM'
+      url: /example_GeneratedLM
     output: web
     title: fastai_transformers_utils
   output: web
