@@ -12,10 +12,6 @@ pip3 install git+https://github.com/cwza/fastai_transformers_utils.git
 
 Please see the notebooks that named start with example and under nbs directory.
 
-[example_roberta_classification](nbs/99a_example_roberta_classification.ipynb)   
-[example_gpt2_lm](nbs/99b_example_gpt2_lm.ipynb)  
-[example_generated_lm](nbs/99c_example_generated_lm.ipynb)  
-
 ## How to develop
 
 ### Editable install

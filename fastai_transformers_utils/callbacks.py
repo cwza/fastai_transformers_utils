@@ -26,7 +26,7 @@ class BertSeqClassificationCallback(Callback):
         '''
         input_ids = self.learn.xb[0]
         device = input_ids.device
-        attention_mask = torch.where(input_ids == self.pad_id, torch.tensor(0, device=device), torch.tensor(1, device=device)).to(input_ids)
+        attention_mask = torch.where(input_ids == self.pad_id, torch.tensor(0, device=device), torch.tensor(1, device=device)).to(device)
         self.learn.xb = [input_ids, attention_mask]
 
     def after_pred(self):
