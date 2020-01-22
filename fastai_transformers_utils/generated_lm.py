@@ -16,7 +16,7 @@ from transformers.modeling_utils import PreTrainedModel, top_k_top_p_filtering, 
 
 # Cell
 class GeneratedLM():
-    def __init__(self, lm, vocab_size, support_past=False):
+    def __init__(self, lm, vocab_size, pad_token_id, eos_token_ids, support_past=False):
         '''
         Your lm's forward function should be this format:
         if support_past==False
@@ -32,8 +32,14 @@ class GeneratedLM():
                 logits: (bs, tgt_seq_len, tgt_vocab_size)
                 presents: List of (2, bs, num_heads, tgt_seq_len, ..)
         '''
+        assert isinstance(pad_token_id, int) and pad_token_id >= 0, "`pad_token_id` should be a positive integer."
+        assert isinstance(eos_token_ids, (list, tuple)) and (
+            e >= 0 for e in eos_token_ids
+        ), "`eos_token_ids` should be a positive integer or a list/tuple of positive integers."
         self.lm = lm
         self.vocab_size = vocab_size
+        self.pad_token_id = pad_token_id
+        self.eos_token_ids = eos_token_ids
         self.support_past = support_past
 
 # Cell
@@ -47,8 +53,6 @@ def _generate_no_beam_search(
     top_k,
     top_p,
     repetition_penalty,
-    pad_token_id,
-    eos_token_ids,
     model_otherargs=[],
     model_otherkwargs={},
 ):
@@ -56,6 +60,8 @@ def _generate_no_beam_search(
         All returned sequence are generated independantly.
     """
     # current position / max lengths / length of generated sentences / unfinished sentences
+    pad_token_id = self.pad_token_id
+    eos_token_ids = self.eos_token_ids
     batch_size = tgt.shape[0]
     cur_len = tgt.shape[1]
     unfinished_sents = tgt.new(batch_size).fill_(1)
@@ -127,8 +133,6 @@ def _generate_beam_search(
     top_k,
     top_p,
     repetition_penalty,
-    pad_token_id,
-    eos_token_ids,
     length_penalty,
     num_beams,
     vocab_size,
@@ -137,6 +141,8 @@ def _generate_beam_search(
 ):
     """ Generate sequences for each example with beam search.
     """
+    pad_token_id = self.pad_token_id
+    eos_token_ids = self.eos_token_ids
     batch_size = tgt.shape[0]
     cur_len = tgt.shape[1]
     # Expand input to num beams
@@ -319,8 +325,6 @@ class GenerateArgs():
     top_k: int = 1
     top_p: float = 1.0
     repetition_penalty: float = 1.0
-    pad_token_id: int = None
-    eos_token_ids: List[int] = None
     length_penalty: float = 1.0
 
 # Cell
@@ -346,8 +350,6 @@ def generate(
     top_k=generate_args.top_k
     top_p=generate_args.top_p
     repetition_penalty=generate_args.repetition_penalty
-    pad_token_id=generate_args.pad_token_id
-    eos_token_ids=generate_args.eos_token_ids
     length_penalty=generate_args.length_penalty
 
     assert isinstance(max_length, int) and max_length > 0, "`max_length` should be a strictely positive integer."
@@ -357,10 +359,6 @@ def generate(
     assert isinstance(top_k, int) and top_k >= 0, "`top_k` should be a positive integer."
     assert 0 <= top_p <= 1, "`top_p` should be between 0 and 1."
     assert repetition_penalty >= 1.0, "`repetition_penalty` should be >= 1."
-    assert isinstance(pad_token_id, int) and pad_token_id >= 0, "`pad_token_id` should be a positive integer."
-    assert isinstance(eos_token_ids, (list, tuple)) and (
-        e >= 0 for e in eos_token_ids
-    ), "`eos_token_ids` should be a positive integer or a list/tuple of positive integers."
     assert length_penalty > 0, "`length_penalty` should be strictely positive."
 
 
@@ -374,8 +372,6 @@ def generate(
             top_k,
             top_p,
             repetition_penalty,
-            pad_token_id,
-            eos_token_ids,
             length_penalty,
             num_beams,
             self.vocab_size,
@@ -391,8 +387,6 @@ def generate(
             top_k,
             top_p,
             repetition_penalty,
-            pad_token_id,
-            eos_token_ids,
             model_otherargs,
             model_otherkwargs,
         )

@@ -112,11 +112,9 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
     <span class="n">top_k</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">top_p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
     <span class="n">repetition_penalty</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">pad_token_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">eos_token_ids</span><span class="o">=</span><span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">],</span>
     <span class="n">length_penalty</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">lm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pad_token_id</span><span class="p">,</span> <span class="p">[</span><span class="n">lm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eos_token_ids</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">numeric_result</span> <span class="o">=</span> <span class="n">generated_lm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_returns</span><span class="p">):</span>
@@ -134,13 +132,9 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The dog and her cat in their mother’s garage were shot inside in the back room
-The dog was seen running in an otherwise undisturbed lane through the night.
-
-
-
-
-The dog who died during World War II - but they died after he lost brainpower he could
+<pre>The dog he helped bring and his father‍s cat, the Great Bear at this year!
+The dog, which has already developed some remarkable features to which my colleague had a gift, will!
+The dog was found in North Carolina the day this photo surfaced after an undercover man captured the dog!
 </pre>
 </div>
 </div>
@@ -174,15 +168,6 @@ The dog who died during World War II - but they died after he lost brainpower he
 
 <div class="output_wrapper">
 <div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-
-</div>
-
-</div>
 
 <div class="output_area">
 
@@ -250,11 +235,9 @@ The dog who died during World War II - but they died after he lost brainpower he
     <span class="n">top_k</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">top_p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">repetition_penalty</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">pad_token_id</span><span class="o">=</span><span class="n">awd_lstm_lm_config</span><span class="p">[</span><span class="s1">&#39;pad_token&#39;</span><span class="p">],</span>
-    <span class="n">eos_token_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
     <span class="n">length_penalty</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocab</span><span class="p">),</span> <span class="n">awd_lstm_lm_config</span><span class="p">[</span><span class="s1">&#39;pad_token&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">numeric_result</span> <span class="o">=</span> <span class="n">generated_lm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_returns</span><span class="p">):</span>
@@ -272,9 +255,8 @@ The dog who died during World War II - but they died after he lost brainpower he
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>xxbos xxmaj the dog training about the second xxup is and a xxmaj national were both due for xxunk xxeos
-xxbos xxmaj the dog show movie adaptation for the xxup dvd / xxmaj north . 
-  xxmaj the film xxeos
+<pre>xxbos xxmaj the dog , xxmaj paul xxunk ( formerly part of , xxmaj michael xxmaj xxunk ) ) xxeos
+xxbos xxmaj the dog dog they are set for becoming too young was thought would affect never good dogs xxeos
 </pre>
 </div>
 </div>
