@@ -3,4 +3,4 @@ from .callbacks import *
 from .tokenizers import *
 from .model_splits import *
 from .transforms import *
-from .generated_lm import GeneratedLM
+from .generated_lm import GeneratedLM, GenerateArgs
