@@ -14,6 +14,7 @@ index = {"TransformersTokenizer": "01_tokenizers.ipynb",
          "GPT2LMHeadCallback": "04_callbacks.ipynb",
          "BertSeqClassificationCallback": "04_callbacks.ipynb",
          "GeneratedLM": "05_GeneratedLM.ipynb",
+         "GeneratedLM.build_model_otherargs_for_beam": "05_GeneratedLM.ipynb",
          "GenerateArgs": "05_GeneratedLM.ipynb",
          "generate": "05_GeneratedLM.ipynb"}
 

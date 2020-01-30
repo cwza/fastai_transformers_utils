@@ -124,6 +124,22 @@ def _generate_no_beam_search(
 
 # Cell
 @patch
+def build_model_otherargs_for_beam(self: GeneratedLM, model_otherargs, num_beams):
+    ''' model_otherargs: List of tensor with shape (bs, ...)
+    returns list of expanded args with shape (bs*num_beams, ...)
+    '''
+    # Expand model_otherargs to num beams
+    expanded_args = []
+    for arg in model_otherargs:
+        bs = arg.shape[0]
+        other_dim = arg.shape[1:]
+        arg = arg.unsqueeze(1).expand(bs, num_beams, *other_dim) # (bs, num_beams, *other_dim)
+        arg = arg.contiguous().view(bs * num_beams, *other_dim)  # (bs*num_beams, *other_dim)
+        expanded_args.append(arg)
+    return expanded_args
+
+# Cell
+@patch
 def _generate_beam_search(
     self:GeneratedLM,
     tgt, # (b, tgt_seq_len)

@@ -61,7 +61,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tgt_vocab_size</span> <span class="o">=</span> <span class="n">tgt_vocab_size</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tgt</span><span class="p">,</span> <span class="n">momory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tgt</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39; </span>
 <span class="sd">        inputs: (tgt, memory)</span>
 <span class="sd">            tgt: (b, tgt_seq_len)</span>
@@ -69,6 +69,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 <span class="sd">        returns: logits, others</span>
 <span class="sd">            logits: (b, tgt_seq_len, tgt_vocab_size)</span>
 <span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">assert</span> <span class="n">tgt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">memory</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="n">tgt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">memory</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="o">*</span><span class="n">tgt</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tgt_vocab_size</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="kc">None</span>
     
@@ -236,6 +237,57 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="build_model_otherargs_for_beam">build_model_otherargs_for_beam<a class="anchor-link" href="#build_model_otherargs_for_beam">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="GeneratedLM.build_model_otherargs_for_beam" class="doc_header"><code>GeneratedLM.build_model_otherargs_for_beam</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/generated_lm.py#L126" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>GeneratedLM.build_model_otherargs_for_beam</code>(<strong><code>model_otherargs</code></strong>, <strong><code>num_beams</code></strong>)</p>
+</blockquote>
+<p>model_otherargs: List of tensor with shape (bs, ...)
+returns list of expanded args with shape (bs*num_beams, ...)</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model_otherargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+                                 <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])]</span>
+<span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                          <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">build_model_otherargs_for_beam</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_otherargs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="_generate_beam_search">_generate_beam_search<a class="anchor-link" href="#_generate_beam_search">&#182;</a></h3>
 </div>
 </div>
@@ -264,7 +316,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 <span class="c1"># With memory, Without past</span>
 <span class="n">generated_decoder</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">decoder</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="p">,</span> <span class="n">pad_token_id</span><span class="p">,</span> <span class="p">[</span><span class="n">eos_token_id</span><span class="p">],</span> <span class="n">support_past</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">tgt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">bs</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="n">bos_token_id</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">_generate_beam_search</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="o">**</span><span class="n">generate_args</span><span class="p">,</span> <span class="n">model_otherargs</span><span class="o">=</span><span class="p">[</span><span class="n">memory</span><span class="p">])</span>
+<span class="n">model_otherargs</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">build_model_otherargs_for_beam</span><span class="p">([</span><span class="n">memory</span><span class="p">],</span> <span class="n">generate_args</span><span class="p">[</span><span class="s1">&#39;num_beams&#39;</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">_generate_beam_search</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="o">**</span><span class="n">generate_args</span><span class="p">,</span> <span class="n">model_otherargs</span><span class="o">=</span><span class="n">model_otherargs</span><span class="p">)</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bs</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_length</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span>
 
@@ -306,7 +359,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="GenerateArgs" class="doc_header"><code>class</code> <code>GenerateArgs</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/generated_lm.py#L320" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GenerateArgs</code>(<strong><code>max_length</code></strong>:<code>int</code>=<em><code>20</code></em>, <strong><code>do_sample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>num_beams</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>temperature</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>top_k</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>top_p</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>repetition_penalty</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>length_penalty</code></strong>:<code>float</code>=<em><code>1.0</code></em>)</p>
+<h2 id="GenerateArgs" class="doc_header"><code>class</code> <code>GenerateArgs</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/generated_lm.py#L336" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GenerateArgs</code>(<strong><code>max_length</code></strong>:<code>int</code>=<em><code>20</code></em>, <strong><code>do_sample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>num_beams</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>temperature</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>top_k</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>top_p</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>repetition_penalty</code></strong>:<code>float</code>=<em><code>1.0</code></em>, <strong><code>length_penalty</code></strong>:<code>float</code>=<em><code>1.0</code></em>)</p>
 </blockquote>
 <p>GenerateArgs(max_length:int=20, do_sample:bool=False, num_beams:int=1, temperature:float=1.0, top_k:int=1, top_p:float=1.0, repetition_penalty:float=1.0, length_penalty:float=1.0)</p>
 
@@ -336,7 +389,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/generated_lm.py#L331" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>tgt</code></strong>, <strong><code>generate_args</code></strong>:<a href="/fastai_transformers_utils/GeneratedLM#GenerateArgs"><code>GenerateArgs</code></a>=<em><code>GenerateArgs(max_length=20, do_sample=False, num_beams=1, temperature=1.0, top_k=1, top_p=1.0, repetition_penalty=1.0, length_penalty=1.0)</code></em>, <strong><code>model_otherargs</code></strong>=<em><code>[]</code></em>, <strong><code>model_otherkwargs</code></strong>=<em><code>{}</code></em>)</p>
+<h4 id="generate" class="doc_header"><code>generate</code><a href="https://github.com/cwza/fastai_transformers_utils/tree/master/fastai_transformers_utils/generated_lm.py#L347" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate</code>(<strong><code>tgt</code></strong>, <strong><code>generate_args</code></strong>:<a href="/fastai_transformers_utils/GeneratedLM#GenerateArgs"><code>GenerateArgs</code></a>=<em><code>GenerateArgs(max_length=20, do_sample=False, num_beams=1, temperature=1.0, top_k=1, top_p=1.0, repetition_penalty=1.0, length_penalty=1.0)</code></em>, <strong><code>model_otherargs</code></strong>=<em><code>[]</code></em>, <strong><code>model_otherkwargs</code></strong>=<em><code>{}</code></em>)</p>
 </blockquote>
 <p>tgt: (b, tgt_seq_len)
 model_otherargs: Other positional args that your model need. Maybe momory from encoder.
@@ -398,25 +451,26 @@ returns: (b, (tgt_seq_len &lt;= ? &lt;= max_length))</p>
 <span class="c1"># With memory, Without past</span>
 <span class="n">generated_decoder</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">decoder</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="p">,</span> <span class="n">pad_token_id</span><span class="p">,</span> <span class="p">[</span><span class="n">eos_token_id</span><span class="p">],</span> <span class="n">support_past</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">tgt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">bs</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="n">bos_token_id</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">,</span> <span class="n">model_otherargs</span><span class="o">=</span><span class="p">[</span><span class="n">memory</span><span class="p">])</span>
+<span class="n">model_otherargs</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">build_model_otherargs_for_beam</span><span class="p">([</span><span class="n">memory</span><span class="p">],</span> <span class="n">generate_args</span><span class="o">.</span><span class="n">num_beams</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">generated_decoder</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">,</span> <span class="n">model_otherargs</span><span class="o">=</span><span class="n">model_otherargs</span><span class="p">)</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bs</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_length</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span>
 
 
-<span class="c1"># # Without memory, With past</span>
-<span class="c1"># generated_lm = GeneratedLM(lm, tgt_vocab_size, pad_token_id, [eos_token_id], support_past=True)</span>
-<span class="c1"># tgt = torch.randint(0, tgt_vocab_size-2, (bs, tgt_seq_len))</span>
-<span class="c1"># result = generated_lm.generate(tgt, generate_args)</span>
-<span class="c1"># test_eq(result.shape[0], bs)</span>
-<span class="c1"># assert result.shape[1] &lt;= max_length and result.shape[1] &gt;= tgt_seq_len</span>
+<span class="c1"># Without memory, With past</span>
+<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="p">,</span> <span class="n">pad_token_id</span><span class="p">,</span> <span class="p">[</span><span class="n">eos_token_id</span><span class="p">],</span> <span class="n">support_past</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tgt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">tgt_seq_len</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">generated_lm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bs</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_length</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">tgt_seq_len</span>
 
 
-<span class="c1"># # Without memory, Without past</span>
-<span class="c1"># generated_lm = GeneratedLM(lm, tgt_vocab_size, pad_token_id, [eos_token_id], support_past=False)</span>
-<span class="c1"># tgt = torch.randint(0, tgt_vocab_size-2, (bs, tgt_seq_len))</span>
-<span class="c1"># result = generated_lm.generate(tgt, generate_args)</span>
-<span class="c1"># test_eq(result.shape[0], bs)</span>
-<span class="c1"># assert result.shape[1] &lt;= max_length and result.shape[1] &gt;= tgt_seq_len</span>
+<span class="c1"># Without memory, Without past</span>
+<span class="n">generated_lm</span> <span class="o">=</span> <span class="n">GeneratedLM</span><span class="p">(</span><span class="n">lm</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="p">,</span> <span class="n">pad_token_id</span><span class="p">,</span> <span class="p">[</span><span class="n">eos_token_id</span><span class="p">],</span> <span class="n">support_past</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tgt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tgt_vocab_size</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">tgt_seq_len</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">generated_lm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tgt</span><span class="p">,</span> <span class="n">generate_args</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bs</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_length</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">tgt_seq_len</span>
 </pre></div>
 
     </div>
