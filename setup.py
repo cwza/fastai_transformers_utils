@@ -46,7 +46,7 @@ setuptools.setup(
     entry_points = { 'console_scripts': cfg.get('console_scripts','').split() },
     #### For github requirements
     install_requires=[
-        'transformers @ git+https://github.com/huggingface/transformers.git',
+        'transformers',
         'fastai2', 'nbdev'
     ],
     ####
