@@ -47,8 +47,11 @@ setuptools.setup(
     #### For github requirements
     install_requires=[
         'transformers',
-        'fastai2', 'nbdev'
+        'fastai2',
     ],
+    extras_require={
+        'dev': ['nbdev']
+    },
     ####
     **setup_cfg)
 

@@ -1,6 +1,6 @@
 
 install:
-	pip3 install -e .
+	pip3 install -e .[dev]
 
 uninstall:
 	python3 setup.py develop --uninstall
