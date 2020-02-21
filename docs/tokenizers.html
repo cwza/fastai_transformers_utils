@@ -18,7 +18,8 @@ sidebar: home_sidebar
 -->
 
 <div class="container" id="notebook-container">
-    
+    {% raw %}
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -87,25 +88,10 @@ use in parallel_gen()</p>
 <span class="n">transfomersTokenizer</span> <span class="o">=</span> <span class="n">TransformersTokenizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
 <span class="n">tok_texts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">transfomersTokenizer</span><span class="p">(</span><span class="n">texts</span><span class="p">))</span>
 
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tok_texts</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]])</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tok_texts</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;[CLS]&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;[SEP]&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;[CLS]&#39;</span><span class="p">,</span> <span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;[SEP]&#39;</span><span class="p">]])</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -119,7 +105,7 @@ use in parallel_gen()</p>
 <span class="c1"># parallel_gen will return generator of (0, [&#39;this&#39;, &#39;is&#39;, &#39;a&#39;, &#39;test&#39;]), (1, [&#39;just&#39;, &#39;test&#39;])</span>
 <span class="n">tok_texts</span> <span class="o">=</span> <span class="n">L</span><span class="p">(</span><span class="n">parallel_gen</span><span class="p">(</span><span class="n">TransformersTokenizer</span><span class="p">,</span> <span class="n">texts</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">))</span><span class="o">.</span><span class="n">sorted</span><span class="p">()</span><span class="o">.</span><span class="n">itemgot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">test_eq</span><span class="p">(</span><span class="n">tok_texts</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">],[</span><span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]])</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">tok_texts</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;[CLS]&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;[SEP]&#39;</span><span class="p">],[</span><span class="s1">&#39;[CLS]&#39;</span><span class="p">,</span> <span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;[SEP]&#39;</span><span class="p">]])</span>
 </pre></div>
 
     </div>
@@ -186,21 +172,6 @@ For the decoder of machine translation</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -218,6 +189,7 @@ For the decoder of machine translation</p>
 </div>
 
 </div>
+    {% endraw %}
 </div>
  
 

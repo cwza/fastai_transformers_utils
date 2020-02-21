@@ -22,7 +22,7 @@ class TransformersNumericalize(Transform):
             )
         )
     def decodes(self, o):
-        return TitledStr(self.tokenizer.decode(o))
+        return TitledStr(self.tokenizer.decode(list(o)))
 
 # Cell
 class Pad2Max(Transform):

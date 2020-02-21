@@ -48,7 +48,7 @@ setuptools.setup(
     install_requires=[
         'fastcore @ git+https://github.com/fastai/fastcore.git',
         'fastai2 @ git+https://github.com/fastai/fastai2.git',
-        'transformers',
+        'transformers==2.5.0',
     ],
     extras_require={
         'dev': ['nbdev']

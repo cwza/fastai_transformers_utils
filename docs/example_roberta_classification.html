@@ -18,7 +18,8 @@ summary: "This is also an integration test."
 -->
 
 <div class="container" id="notebook-container">
-    
+    {% raw %}
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -84,6 +85,37 @@ from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassifi
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>RobertaTokenizerFast has an issue when working on mask language modeling where it introduces an extra encoded space before the mask token.See https://github.com/huggingface/transformers/pull/2778 for more information.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -239,31 +271,31 @@ from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassifi
     <tr>
       <th>0</th>
       <td>negative</td>
-      <td>Un - ble eping - bel iev able ! ĠMeg ĠRyan Ġdoesn 't Ġeven Ġlook Ġher Ġusual Ġpert Ġl ovable Ġself Ġin Ġthis , Ġwhich Ġnormally Ġmakes Ġme Ġforgive Ġher Ġshallow Ġtick y Ġacting Ġsch tick . ĠHard Ġto Ġbelieve Ġshe Ġwas Ġthe Ġproducer Ġon Ġthis Ġdog . ĠPlus ĠKevin ĠK line : Ġwhat Ġkind Ġof Ġsuicide Ġtrip Ġhas Ġhis Ġcareer Ġbeen Ġon ? ĠWho osh ... ĠBan zai !!! ĠFinally Ġthis Ġwas Ġdirected Ġby Ġthe Ġguy Ġwho Ġdid ĠBig ĠChill ? ĠMust Ġbe Ġa Ġreplay Ġof ĠJon est own Ġ- Ġh ollywood Ġstyle . ĠWoo off f !</td>
+      <td>&lt;s&gt; Un - ble eping - bel iev able ! ĠMeg ĠRyan Ġdoesn 't Ġeven Ġlook Ġher Ġusual Ġpert Ġl ovable Ġself Ġin Ġthis , Ġwhich Ġnormally Ġmakes Ġme Ġforgive Ġher Ġshallow Ġtick y Ġacting Ġsch tick . ĠHard Ġto Ġbelieve Ġshe Ġwas Ġthe Ġproducer Ġon Ġthis Ġdog . ĠPlus ĠKevin ĠK line : Ġwhat Ġkind Ġof Ġsuicide Ġtrip Ġhas Ġhis Ġcareer Ġbeen Ġon ? ĠWho osh ... ĠBan zai !!! ĠFinally Ġthis Ġwas Ġdirected Ġby Ġthe Ġguy Ġwho Ġdid ĠBig ĠChill ? ĠMust Ġbe Ġa Ġreplay Ġof ĠJon est own Ġ- Ġh ollywood Ġstyle . ĠWoo off f ! &lt;/s&gt;</td>
       <td>False</td>
     </tr>
     <tr>
       <th>1</th>
       <td>positive</td>
-      <td>This Ġis Ġa Ġextremely Ġwell - made Ġfilm . ĠThe Ġacting , Ġscript Ġand Ġcamera - work Ġare Ġall Ġfirst - rate . ĠThe Ġmusic Ġis Ġgood , Ġtoo , Ġthough Ġit Ġis Ġmostly Ġearly Ġin Ġthe Ġfilm , Ġwhen Ġthings Ġare Ġstill Ġrelatively Ġche ery . ĠThere Ġare Ġno Ġreally Ġsuperst ars Ġin Ġthe Ġcast , Ġthough Ġseveral Ġfaces Ġwill Ġbe Ġfamiliar . ĠThe Ġentire Ġcast Ġdoes Ġan Ġexcellent Ġjob Ġwith Ġthe Ġscript .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; But Ġit Ġis Ġhard Ġto Ġwatch , Ġbecause Ġthere Ġis Ġno Ġgood Ġend Ġto Ġa Ġsituation Ġlike Ġthe Ġone Ġpresented . ĠIt Ġis Ġnow Ġfashionable Ġto Ġblame Ġthe ĠBritish Ġfor Ġse...</td>
+      <td>&lt;s&gt; This Ġis Ġa Ġextremely Ġwell - made Ġfilm . ĠThe Ġacting , Ġscript Ġand Ġcamera - work Ġare Ġall Ġfirst - rate . ĠThe Ġmusic Ġis Ġgood , Ġtoo , Ġthough Ġit Ġis Ġmostly Ġearly Ġin Ġthe Ġfilm , Ġwhen Ġthings Ġare Ġstill Ġrelatively Ġche ery . ĠThere Ġare Ġno Ġreally Ġsuperst ars Ġin Ġthe Ġcast , Ġthough Ġseveral Ġfaces Ġwill Ġbe Ġfamiliar . ĠThe Ġentire Ġcast Ġdoes Ġan Ġexcellent Ġjob Ġwith Ġthe Ġscript .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; But Ġit Ġis Ġhard Ġto Ġwatch , Ġbecause Ġthere Ġis Ġno Ġgood Ġend Ġto Ġa Ġsituation Ġlike Ġthe Ġone Ġpresented . ĠIt Ġis Ġnow Ġfashionable Ġto Ġblame Ġthe ĠBritish Ġfor...</td>
       <td>False</td>
     </tr>
     <tr>
       <th>2</th>
       <td>negative</td>
-      <td>Every Ġonce Ġin Ġa Ġlong Ġwhile Ġa Ġmovie Ġwill Ġcome Ġalong Ġthat Ġwill Ġbe Ġso Ġawful Ġthat ĠI Ġfeel Ġcompelled Ġto Ġwarn Ġpeople . ĠIf ĠI Ġlabor Ġall Ġmy Ġdays Ġand ĠI Ġcan Ġsave Ġbut Ġone Ġsoul Ġfrom Ġwatching Ġthis Ġmovie , Ġhow Ġgreat Ġwill Ġbe Ġmy Ġjoy .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; Where Ġto Ġbegin Ġmy Ġdiscussion Ġof Ġpain . ĠFor Ġstarters , Ġthere Ġwas Ġa Ġmusical Ġmont age Ġevery Ġfive Ġminutes . ĠThere Ġwas Ġno Ġcharacter Ġdevelopment . ĠEvery Ġcharacter Ġwas Ġa Ġstereotype . ĠWe Ġhad Ġswearing Ġguy , Ġfat Ġguy Ġwho Ġeats Ġdon uts , Ġgoofy Ġforeign Ġguy , Ġetc . ĠThe Ġscript Ġfelt Ġas Ġif ...</td>
+      <td>&lt;s&gt; Every Ġonce Ġin Ġa Ġlong Ġwhile Ġa Ġmovie Ġwill Ġcome Ġalong Ġthat Ġwill Ġbe Ġso Ġawful Ġthat ĠI Ġfeel Ġcompelled Ġto Ġwarn Ġpeople . ĠIf ĠI Ġlabor Ġall Ġmy Ġdays Ġand ĠI Ġcan Ġsave Ġbut Ġone Ġsoul Ġfrom Ġwatching Ġthis Ġmovie , Ġhow Ġgreat Ġwill Ġbe Ġmy Ġjoy .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; Where Ġto Ġbegin Ġmy Ġdiscussion Ġof Ġpain . ĠFor Ġstarters , Ġthere Ġwas Ġa Ġmusical Ġmont age Ġevery Ġfive Ġminutes . ĠThere Ġwas Ġno Ġcharacter Ġdevelopment . ĠEvery Ġcharacter Ġwas Ġa Ġstereotype . ĠWe Ġhad Ġswearing Ġguy , Ġfat Ġguy Ġwho Ġeats Ġdon uts , Ġgoofy Ġforeign Ġguy , Ġetc . ĠThe Ġscript Ġfelt Ġas ...</td>
       <td>False</td>
     </tr>
     <tr>
       <th>3</th>
       <td>positive</td>
-      <td>Name Ġjust Ġsays Ġit Ġall . ĠI Ġwatched Ġthis Ġmovie Ġwith Ġmy Ġdad Ġwhen Ġit Ġcame Ġout Ġand Ġhaving Ġserved Ġin ĠKorea Ġhe Ġhad Ġgreat Ġadmiration Ġfor Ġthe Ġman . ĠThe Ġdisappointing Ġthing Ġabout Ġthis Ġfilm Ġis Ġthat Ġit Ġonly Ġconcentrate Ġon Ġa Ġshort Ġperiod Ġof Ġthe Ġman 's Ġlife Ġ- Ġinterestingly Ġenough Ġthe Ġman 's Ġentire Ġlife Ġwould Ġhave Ġmade Ġsuch Ġan Ġepic Ġbio - pic Ġthat Ġit Ġis Ġstaggering Ġto Ġimagine Ġthe Ġcost Ġfor Ġproduction .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; Some Ġposters Ġel ude Ġto Ġthe Ġflawed Ġcharacteristics Ġabout Ġthe Ġman , Ġwhich Ġare Ġcheap Ġshots . ĠThe Ġtheme Ġof Ġt...</td>
+      <td>&lt;s&gt; Name Ġjust Ġsays Ġit Ġall . ĠI Ġwatched Ġthis Ġmovie Ġwith Ġmy Ġdad Ġwhen Ġit Ġcame Ġout Ġand Ġhaving Ġserved Ġin ĠKorea Ġhe Ġhad Ġgreat Ġadmiration Ġfor Ġthe Ġman . ĠThe Ġdisappointing Ġthing Ġabout Ġthis Ġfilm Ġis Ġthat Ġit Ġonly Ġconcentrate Ġon Ġa Ġshort Ġperiod Ġof Ġthe Ġman 's Ġlife Ġ- Ġinterestingly Ġenough Ġthe Ġman 's Ġentire Ġlife Ġwould Ġhave Ġmade Ġsuch Ġan Ġepic Ġbio - pic Ġthat Ġit Ġis Ġstaggering Ġto Ġimagine Ġthe Ġcost Ġfor Ġproduction .&lt; br Ġ/ &gt;&lt; br Ġ/&gt; Some Ġposters Ġel ude Ġto Ġthe Ġflawed Ġcharacteristics Ġabout Ġthe Ġman , Ġwhich Ġare Ġcheap Ġshots . ĠThe Ġtheme Ġo...</td>
       <td>False</td>
     </tr>
     <tr>
       <th>4</th>
       <td>negative</td>
-      <td>This Ġmovie Ġsucceeds Ġat Ġbeing Ġone Ġof Ġthe Ġmost Ġunique Ġmovies Ġyou 've Ġseen . ĠHowever Ġthis Ġcomes Ġfrom Ġthe Ġfact Ġthat Ġyou Ġcan 't Ġmake Ġheads Ġor Ġtails Ġof Ġthis Ġmess . ĠIt Ġalmost Ġseems Ġas Ġa Ġseries Ġof Ġchallenges Ġset Ġup Ġto Ġdetermine Ġwhether Ġor Ġnot Ġyou Ġare Ġwilling Ġto Ġwalk Ġout Ġof Ġthe Ġmovie Ġand Ġgive Ġup Ġthe Ġmoney Ġyou Ġjust Ġpaid . ĠIf Ġyou Ġdon 't Ġwant Ġto Ġfeel Ġslight ed Ġyou 'll Ġsit Ġthrough Ġthis Ġhorrible Ġfilm Ġand Ġdevelop Ġa Ġreal Ġsense Ġof Ġpity Ġfor Ġthe Ġactors Ġinvolved , Ġthey 've Ġall Ġseen Ġbetter Ġdays , Ġbut Ġthen Ġyou Ġrealize Ġ...</td>
+      <td>&lt;s&gt; This Ġmovie Ġsucceeds Ġat Ġbeing Ġone Ġof Ġthe Ġmost Ġunique Ġmovies Ġyou 've Ġseen . ĠHowever Ġthis Ġcomes Ġfrom Ġthe Ġfact Ġthat Ġyou Ġcan 't Ġmake Ġheads Ġor Ġtails Ġof Ġthis Ġmess . ĠIt Ġalmost Ġseems Ġas Ġa Ġseries Ġof Ġchallenges Ġset Ġup Ġto Ġdetermine Ġwhether Ġor Ġnot Ġyou Ġare Ġwilling Ġto Ġwalk Ġout Ġof Ġthe Ġmovie Ġand Ġgive Ġup Ġthe Ġmoney Ġyou Ġjust Ġpaid . ĠIf Ġyou Ġdon 't Ġwant Ġto Ġfeel Ġslight ed Ġyou 'll Ġsit Ġthrough Ġthis Ġhorrible Ġfilm Ġand Ġdevelop Ġa Ġreal Ġsense Ġof Ġpity Ġfor Ġthe Ġactors Ġinvolved , Ġthey 've Ġall Ġseen Ġbetter Ġdays , Ġbut Ġthen Ġyou Ġreali...</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1129,6 +1161,7 @@ Callbacks:
 </div>
 
 </div>
+    {% endraw %}
 </div>
  
 

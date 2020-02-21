@@ -29,6 +29,6 @@ class GPT2DecoderTokenizer(GPT2Tokenizer):
         super().__init__(*inputs, **kwargs)
         special_tokens_map = dict(bos_token='<|bos|>', pad_token='<|pad|>')
         self.add_special_tokens(special_tokens_map)
-    def _tokenize(self, text, add_prefix_space=False):
-        bpe_tokens = super()._tokenize(text, add_prefix_space=add_prefix_space)
+    def _tokenize(self, text):
+        bpe_tokens = super()._tokenize(text)
         return [self.bos_token] + bpe_tokens + [self.eos_token]

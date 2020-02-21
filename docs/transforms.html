@@ -18,7 +18,8 @@ summary: "Numericalize and Padding"
 -->
 
 <div class="container" id="notebook-container">
-    
+    {% raw %}
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
@@ -82,7 +83,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span>
 
-<span class="n">tok_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="n">tok_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;[CLS]&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;[SEP]&#39;</span><span class="p">]</span>
 <span class="n">num_list</span> <span class="o">=</span> <span class="n">TensorText</span><span class="p">([</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">1037</span><span class="p">,</span> <span class="mi">3231</span><span class="p">,</span>  <span class="mi">102</span><span class="p">])</span>
 <span class="n">transformersNumericalizer</span> <span class="o">=</span> <span class="n">TransformersNumericalize</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
 
@@ -152,6 +153,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
+    {% endraw %}
 </div>
  
 
