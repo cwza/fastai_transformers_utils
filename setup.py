@@ -46,6 +46,7 @@ setuptools.setup(
     entry_points = { 'console_scripts': cfg.get('console_scripts','').split() },
     #### For github requirements
     install_requires=[
+        'fastcore @ git+https://github.com/fastai/fastcore.git',
         'fastai2 @ git+https://github.com/fastai/fastai2.git',
         'transformers',
     ],
